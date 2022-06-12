@@ -468,8 +468,6 @@ spec:
 #      dnsPolicy: ClusterFirst
       dnsPolicy: ClusterFirstWithHostNet
       hostNetwork: true
-      publishService:  # hostNetwork 模式下设置为false，通过节点IP地址上报ingress status数据
-        enabled: false
       nodeSelector:
         kubernetes.io/os: linux
       serviceAccountName: ingress-nginx
