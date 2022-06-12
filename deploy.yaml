@@ -337,7 +337,7 @@ spec:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/name: ingress-nginx
-  type: LoadBalancer
+#  type: LoadBalancer
 ---
 apiVersion: v1
 kind: Service
@@ -363,7 +363,8 @@ spec:
   type: ClusterIP
 ---
 apiVersion: apps/v1
-kind: Deployment
+#kind: Deployment
+kind: Daemonset
 metadata:
   labels:
     app.kubernetes.io/component: controller
@@ -464,7 +465,11 @@ spec:
         - mountPath: /usr/local/certificates/
           name: webhook-cert
           readOnly: true
-      dnsPolicy: ClusterFirst
+#      dnsPolicy: ClusterFirst
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      publishService:  # hostNetwork 模式下设置为false，通过节点IP地址上报ingress status数据
+        enabled: false
       nodeSelector:
         kubernetes.io/os: linux
       serviceAccountName: ingress-nginx
