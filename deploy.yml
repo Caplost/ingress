@@ -321,7 +321,7 @@ metadata:
   name: ingress-nginx-controller
   namespace: default
 spec:
-  externalTrafficPolicy: Local
+  #externalTrafficPolicy: Local
   ports:
   - appProtocol: http
     name: http
