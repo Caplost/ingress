@@ -364,7 +364,7 @@ spec:
 ---
 apiVersion: apps/v1
 #kind: Deployment
-kind: Daemonset
+kind: Daemonsets
 metadata:
   labels:
     app.kubernetes.io/component: controller
